@@ -1,0 +1,39 @@
+{
+  "name": "deflate-string",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Compress a string to a string with the runtime's own deflate. Smaller than lz-string at every size measured, for URLs, localStorage and cookies. Zero dependencies.",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {"types": "./dist/index.d.mts", "default": "./dist/index.mjs"},
+      "require": {"types": "./dist/index.d.cts", "default": "./dist/index.cjs"}
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": false,
+  "engines": {"node": ">=18"},
+  "license": "MIT",
+  "author": "Tom Ryan",
+  "keywords": ["compress", "compression", "deflate", "string", "lz-string", "localstorage", "url", "base64url", "share-link", "zero-dependency"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/api.test.mjs test/roundtrip.test.mjs",
+    "test:types": "tsc -p test/tsconfig.json",
+    "test:pack": "node scripts/test-pack.mjs",
+    "verify": "npm run build && npm test && npm run test:types && npm run test:pack",
+    "bench": "node bench/bench.mjs",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run verify"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "lz-string": "^1.5.0"
+  },
+  "publishConfig": {"access": "public", "registry": "https://registry.npmjs.org/"},
+  "repository": {"type": "git", "url": "git+https://github.com/Atomics-hub/deflate-string.git"},
+  "homepage": "https://github.com/Atomics-hub/deflate-string#readme",
+  "bugs": {"url": "https://github.com/Atomics-hub/deflate-string/issues"}
+}
