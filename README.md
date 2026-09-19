@@ -3,6 +3,9 @@
 Compress a string to a string, using the compressor your runtime already ships. Smaller than
 `lz-string` on every payload measured. Zero dependencies.
 
+**Outgrown `lz-string` for localStorage or a URL?** That is what this is for. It uses the platform's
+own compression, and is 2x to 12.8x smaller on every payload measured.
+
 ```js
 import {compressToUrl, decompressFromUrl} from 'deflate-string';
 
@@ -134,3 +137,9 @@ returning partial or wrong text.
 ## Licence
 
 MIT
+
+---
+
+Part of a set of measured defects in widely used npm packages — the full list is at
+[tomryan.dev/silent-defects](https://tomryan.dev/silent-defects/), and `npx silent-defects` checks
+your own dependencies against it.
